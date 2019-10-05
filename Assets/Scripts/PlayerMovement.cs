@@ -20,8 +20,6 @@ public class PlayerMovement : MonoBehaviour
         m_target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         m_direction = m_target - transform.position;
 
-        Debug.Log(m_direction.magnitude) ;
-
         m_rigidbody.velocity = Vector2.zero;
         if (m_direction.magnitude > 0.1f)
         {
