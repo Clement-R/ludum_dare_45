@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] private Transform m_dummyTarget;
-
     private WeaponSystem m_weapon;
     private Transform m_target;
     private GameObject[] m_enemies;

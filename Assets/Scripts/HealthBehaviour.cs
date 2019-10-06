@@ -30,6 +30,7 @@ public class HealthBehaviour : MonoBehaviour
 
     [SerializeField] private float m_maxHealth = 100;
     [SerializeField] private float m_armorFactor = 0f;
+    [SerializeField] private bool m_destroyOnDeath = true;
 
     private void Start()
     {
@@ -41,6 +42,8 @@ public class HealthBehaviour : MonoBehaviour
     {
         Health -= p_amount * (1f - m_armorFactor);
         OnHitTaken?.Invoke();
+
+        Debug.Log($"TakeDamage: {gameObject.name} -- {Health}");
 
         if(Health <= 0f)
             Death();

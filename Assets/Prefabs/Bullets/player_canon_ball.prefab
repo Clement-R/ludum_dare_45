@@ -98,7 +98,7 @@ MonoBehaviour:
   Speed: 10
   m_layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_steering: 0
 --- !u!50 &8026036767926176904
 Rigidbody2D:

@@ -41,8 +41,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D p_other)
     {
-        //TODO: Implement
-        // Get Health component
-        // health.TakeDamage(m_damage)
+        if(m_layer == (m_layer | (1 << p_other.gameObject.layer)))
+        {
+            Debug.Log($"Attacking {p_other.name}");
+            p_other.GetComponent<HealthBehaviour>().TakeDamage(m_damage);
+            Destroy(gameObject);
+        }
     }
 }

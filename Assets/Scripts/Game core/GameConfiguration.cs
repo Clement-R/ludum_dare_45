@@ -25,4 +25,9 @@ public class GameConfiguration : MonoBehaviour
         else
             Destroy(gameObject);
     }
+
+    public void SetPlayer(GameObject p_player)
+    {
+        m_player = p_player;
+    }
 }
