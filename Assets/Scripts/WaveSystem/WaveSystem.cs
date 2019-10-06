@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveSystem : MonoBehaviour
 {
+    public Action OnEnd;
+
     public bool IsDone
     {
         get;
@@ -34,6 +36,7 @@ public class WaveSystem : MonoBehaviour
                 if(IsLastWave())
                 {
                     IsDone = true;
+                    OnEnd?.Invoke();
                 }
                 else
                 {

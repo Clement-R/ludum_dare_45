@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private bool m_steering = false;
     
     private Rigidbody2D m_rigidbody;
-    private int m_damage = 1;
+    private float m_damage = 1f;
 
     private void Awake()
     {
@@ -18,13 +18,13 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 5f);
     }
 
-    public void Shoot(Vector2 p_direction, int p_damage)
+    public void Shoot(Vector2 p_direction, float p_damage)
     {
         m_damage = p_damage;
         m_rigidbody.AddForce(p_direction * Speed, ForceMode2D.Impulse);
     }
 
-    public void ShootAt(Transform p_target, int p_damage)
+    public void ShootAt(Transform p_target, float p_damage)
     {
         Vector2 direction = (p_target.position - transform.position).normalized;
         m_damage = p_damage;

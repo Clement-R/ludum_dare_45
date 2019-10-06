@@ -7,7 +7,7 @@ public class SpreadShot : BulletPattern
 {
     public float Angle = 45f;
 
-    public override void Shoot(Vector2 m_position, Transform p_target, Bullet p_bullet, int p_damage)
+    public override void Shoot(Vector2 m_position, Transform p_target, Bullet p_bullet, float p_damage)
     {
         //TODO: Use pool
         Bullet bullet = Instantiate(p_bullet, m_position, Quaternion.identity);

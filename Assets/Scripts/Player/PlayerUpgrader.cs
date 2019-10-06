@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class PlayerUpgrader : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private WeaponSystem m_weapon;
+    [SerializeField] private PlayerMovement m_movement;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddPower()
+    {
+        //TODO: Change projectile, change damage
+        // list of projectiles per power 1: arrow, 2: bullet, 3: cannon ball, etc.
+    }
+
+    public void AddSpeed()
     {
         
+    }
+
+    public void AddArmor()
+    {
+
     }
 }

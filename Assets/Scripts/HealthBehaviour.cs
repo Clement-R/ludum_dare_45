@@ -32,13 +32,23 @@ public class HealthBehaviour : MonoBehaviour
     public void TakeDamage(float p_amount)
     {
         Health -= p_amount;
+        OnHitTaken?.Invoke();
+
         if(Health <= 0f)
             Death();
+    }
+
+    public void Heal(float p_amount)
+    {
+        Health = Mathf.Clamp(Health + p_amount, 0, MaxHealth);
+        OnHeal?.Invoke();
     }
 
     private void Death()
     {
         //TODO: Implement
+        Destroy(gameObject);
+        OnDeath?.Invoke();
     }
 
     #region DEBUG

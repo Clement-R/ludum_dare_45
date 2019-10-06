@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a13ab7e9a521f24a80e3cb602927501, type: 3}
   m_Name: SimpleShotPhase
   m_EditorClassIdentifier: 
-  m_movementPattern: {fileID: 0}
-  m_bulletPattern: {fileID: 0}
+  m_movementPattern: {fileID: 11400000, guid: 17f53254aa5905f43b78a377bef28308, type: 2}
+  m_bulletPattern: {fileID: 11400000, guid: bb60c76421ebc2948ad47de138f77c29, type: 2}

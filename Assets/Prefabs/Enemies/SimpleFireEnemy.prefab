@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 233051233952275918}
   - component: {fileID: 7252597103272524269}
   - component: {fileID: 8090029504373172941}
+  - component: {fileID: -797652480851558768}
   m_Layer: 0
   m_Name: SimpleFireEnemy
   m_TagString: Untagged
@@ -151,3 +152,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-797652480851558768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600946911863778641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1781d395596eefe4795f94e47c962eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 10

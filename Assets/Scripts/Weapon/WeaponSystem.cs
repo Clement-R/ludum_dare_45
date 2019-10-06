@@ -12,8 +12,14 @@ public class WeaponSystem : MonoBehaviour
         }
     }
 
+    public float Damage
+    {
+        get { return m_damage; }
+        set { m_damage = value; }
+    }
+
     [SerializeField] private float m_attackSpeed = 1f;
-    [SerializeField] private int m_damage = 1;
+    [SerializeField] private float m_damage = 1;
     [SerializeField] private float m_cooldown = 0.5f;
     [SerializeField] private float m_attackRange = 5f;
     [SerializeField] private Bullet m_bulletPrefab;
