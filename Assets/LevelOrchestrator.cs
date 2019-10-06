@@ -1,6 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelOrchestrator : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class LevelOrchestrator : MonoBehaviour
         // Reset player position
         GameConfiguration.Instance.Player.transform.position = Vector2.zero;
 
+        GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath += LevelLose;
+
         // Show player
         m_playerRenderer = GameConfiguration.Instance.Player.GetComponent<PlayerRenderer>();
         m_playerRenderer.Show();
@@ -38,6 +42,7 @@ public class LevelOrchestrator : MonoBehaviour
 
     private void LevelEnd()
     {
+        GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath -= LevelLose;
         m_playerRenderer.Hide();
 
         // Apply upgrade to player
@@ -55,8 +60,33 @@ public class LevelOrchestrator : MonoBehaviour
             for (int i = 0; i < m_speedUpgrade; i++)
                 upgrader.AddSpeed();
 
-        //TODO: Show end menu
+        //TODO: Play win effect
 
         //TODO: Load Map level
+        StartCoroutine(_WinEffect());
+    }
+
+    private void LevelLose()
+    {
+        GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath -= LevelLose;
+        StartCoroutine(_LoseEffect());
+    }
+
+    private IEnumerator _WinEffect()
+    {
+        //TODO: Implement
+        yield return null;
+        
+        MapOrchestrator.Instance.LevelWin(this);
+        SceneManager.LoadScene("Map");
+    }
+
+    private IEnumerator _LoseEffect()
+    {
+        //TODO: Implement
+        yield return null;
+
+        Debug.Log("Level LOSE");
+        SceneManager.LoadScene("Map");
     }
 }

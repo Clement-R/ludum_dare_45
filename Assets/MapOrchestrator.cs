@@ -29,6 +29,13 @@ public class MapOrchestrator : MonoBehaviour
         SceneManager.LoadScene("Level");
     }
 
+    public void LevelWin(LevelOrchestrator p_level)
+    {
+        //TODO: Implement
+        // Cross level and set is as not-playable
+        // If is last level -> Win game and show score
+    }
+
     private void SceneLoaded(Scene p_previous, Scene p_actual)
     {
         Instantiate(m_levelToLoad);

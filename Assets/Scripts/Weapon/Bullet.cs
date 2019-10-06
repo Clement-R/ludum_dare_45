@@ -43,7 +43,6 @@ public class Bullet : MonoBehaviour
     {
         if(m_layer == (m_layer | (1 << p_other.gameObject.layer)))
         {
-            Debug.Log($"Attacking {p_other.name}");
             p_other.GetComponent<HealthBehaviour>().TakeDamage(m_damage);
             Destroy(gameObject);
         }
