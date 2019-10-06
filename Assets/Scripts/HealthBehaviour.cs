@@ -24,6 +24,11 @@ public class HealthBehaviour : MonoBehaviour
 
     [SerializeField] private float MaxHealth = 100;
 
+    private void Start()
+    {
+        Health = MaxHealth;    
+    }
+
     public void TakeDamage(float p_amount)
     {
         Health -= p_amount;

@@ -28,6 +28,11 @@ public class WeaponSystem : MonoBehaviour
         m_pattern = Instantiate(m_patternPrefab);
     }
 
+    public void SetPattern(BulletPattern p_patternPrefab)
+    {
+        m_pattern = Instantiate(p_patternPrefab);
+    }
+
     public void Shoot(Transform p_target)
     {
         m_lastShot = Time.time;
