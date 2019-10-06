@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1420316904}
   - component: {fileID: 1420316905}
   - component: {fileID: 1420316906}
+  - component: {fileID: 4013536998928134727}
+  - component: {fileID: 7493885130705045073}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -98,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rigidbody: {fileID: 1420316904}
   m_speed: 5
+  m_initialSpeed: 2
 --- !u!50 &1420316904
 Rigidbody2D:
   serializedVersion: 4
@@ -134,9 +137,10 @@ MonoBehaviour:
   m_attackSpeed: 1
   m_damage: 1
   m_cooldown: 0.5
+  m_attackRange: 5
   m_bulletPrefab: {fileID: 4740569256431223474, guid: a786c632f618e1541813201ad6ab403b,
     type: 3}
-  m_patternPrefab: {fileID: 11400000, guid: bb60c76421ebc2948ad47de138f77c29, type: 2}
+  m_patternPrefab: {fileID: 11400000, guid: 41a95e37a5f9d45459ef7ca7e93a225b, type: 2}
 --- !u!114 &1420316906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,3 +154,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dummyTarget: {fileID: 0}
+--- !u!114 &4013536998928134727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2409684046676476150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6463d86f1f42434789bd1aa536f570b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_weapon: {fileID: 1420316905}
+  m_movement: {fileID: 496138875}
+  m_health: {fileID: 7493885130705045073}
+--- !u!114 &7493885130705045073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2409684046676476150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1781d395596eefe4795f94e47c962eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 100
+  m_armorFactor: 0

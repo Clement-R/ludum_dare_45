@@ -393,11 +393,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1420316905, guid: 64fe0ff1cf97da34b84a094f730c524c, type: 3}
-      propertyPath: m_patternPrefab
-      value: 
-      objectReference: {fileID: 11400000, guid: 41a95e37a5f9d45459ef7ca7e93a225b,
-        type: 2}
     - target: {fileID: 1420316906, guid: 64fe0ff1cf97da34b84a094f730c524c, type: 3}
       propertyPath: m_dummyTarget
       value: 
@@ -512,18 +507,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 452874710}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1420316904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420316903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6463d86f1f42434789bd1aa536f570b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1515544720
 GameObject:
   m_ObjectHideFlags: 0

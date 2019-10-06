@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -797652480851558768}
   m_Layer: 0
   m_Name: SimpleFireEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,4 +164,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1781d395596eefe4795f94e47c962eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 10
+  m_maxHealth: 100
+  m_armorFactor: 0

@@ -14,24 +14,32 @@ public class HealthBehaviour : MonoBehaviour
         private set;
     }
 
+    public float ArmorFactor
+    {
+        get { return m_armorFactor; }
+        set { m_armorFactor = value; }
+    }
+
     public float Percent
     {
         get
         {
-            return Health / MaxHealth;
+            return Health / m_maxHealth;
         }
     }
 
-    [SerializeField] private float MaxHealth = 100;
+    [SerializeField] private float m_maxHealth = 100;
+    [SerializeField] private float m_armorFactor = 0f;
 
     private void Start()
     {
-        Health = MaxHealth;    
+        Health = m_maxHealth;
+        ArmorFactor = m_armorFactor;
     }
 
     public void TakeDamage(float p_amount)
     {
-        Health -= p_amount;
+        Health -= p_amount * (1f - m_armorFactor);
         OnHitTaken?.Invoke();
 
         if(Health <= 0f)
@@ -40,7 +48,7 @@ public class HealthBehaviour : MonoBehaviour
 
     public void Heal(float p_amount)
     {
-        Health = Mathf.Clamp(Health + p_amount, 0, MaxHealth);
+        Health = Mathf.Clamp(Health + p_amount, 0, m_maxHealth);
         OnHeal?.Invoke();
     }
 

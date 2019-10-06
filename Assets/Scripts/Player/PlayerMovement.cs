@@ -16,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
             m_speed = value;
         }
     }
+
+    public float InitialSpeed
+    {
+        get { return m_initialSpeed; }
+    }
     
     [SerializeField] private Rigidbody2D m_rigidbody;
     [SerializeField] private float m_speed = 2f;
