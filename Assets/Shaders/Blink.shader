@@ -1,12 +1,18 @@
-﻿Shader "Unlit/NewUnlitShader"
+﻿Shader "Unlit/Blink"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _Color ("Color", Color) = (1.0, 1.0, 1.0, 1.0)
+        _Intensity ("Intensity", Range(0,1)) = 0
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags
+        {
+            "RenderType"="Opaque"
+        }
+        Blend SrcAlpha OneMinusSrcAlpha
         LOD 100
 
         Pass
@@ -26,12 +32,13 @@
             struct v2f
             {
                 float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
             };
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            fixed4 _Color;
+            float _Intensity;
 
             v2f vert (appdata v)
             {
@@ -43,12 +50,9 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float2 uv = i.uv;
-                uv.x += cos(_Time.x) * 0.1;
-                uv.y += sin(_Time.x) * 0.1;
-
-                fixed4 col = tex2D(_MainTex, uv);
-
+                fixed4 col = tex2D(_MainTex, i.uv);
+                col.rgb = lerp(col.rgb, _Color.rgb, _Intensity);
+                col.rgb *= col.a;
                 return col;
             }
             ENDCG
