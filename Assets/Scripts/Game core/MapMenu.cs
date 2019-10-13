@@ -4,8 +4,21 @@ using UnityEngine;
 
 public class MapMenu : MonoBehaviour
 {
-    public void LevelClicked(LevelOrchestrator p_level)
+    private void Start()
     {
-        MapOrchestrator.Instance.LaunchLevel(p_level);
+        UpdateUI();    
+    }
+
+    public void LevelClicked(Level p_level)
+    {
+        GameOrchestrator.Instance.LaunchLevel(p_level);
+    }
+
+    private void UpdateUI()
+    {
+        //TODO: Implement
+        // Show upgrades
+        // Cross level done
+        // Cross level and set is as not-playable
     }
 }

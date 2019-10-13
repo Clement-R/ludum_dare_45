@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5408565297909110727}
-  - component: {fileID: 9108243850167628977}
+  - component: {fileID: 2960887946225698764}
   - component: {fileID: 4424218524331515055}
   m_Layer: 0
   m_Name: Level1
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9108243850167628977
+--- !u!114 &2960887946225698764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3635379119014231005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d9737b515d2074a981a6635288aa82, type: 3}
+  m_Script: {fileID: 11500000, guid: 74442ceebb6e7b44a95eb2152660b9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_waveSystem: {fileID: 4424218524331515055}
-  m_bossPrefab: {fileID: 6623078747062256223, guid: 2ef2301f486626747b2a1fd23b23ab60,
+  WaveSystem: {fileID: 4424218524331515055}
+  BossPrefab: {fileID: 6623078747062256223, guid: 2ef2301f486626747b2a1fd23b23ab60,
     type: 3}
+  PowerUpgrade: 1
+  ArmorUpgrade: 1
+  SpeedUpgrade: 1
 --- !u!114 &4424218524331515055
 MonoBehaviour:
   m_ObjectHideFlags: 0

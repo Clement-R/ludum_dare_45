@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public WaveSystem WaveSystem;
+    public GameObject BossPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Upgrade")]
+    public int PowerUpgrade = 0;
+    public int ArmorUpgrade = 0;
+    public int SpeedUpgrade = 0;
 }

@@ -6,21 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelOrchestrator : MonoBehaviour
 {
-    [SerializeField] WaveSystem m_waveSystem;
-    [SerializeField] GameObject m_bossPrefab;
-
-    [Header("Upgrade")]
-    [SerializeField] private int m_powerUpgrade = 0;
-    [SerializeField] private int m_armorUpgrade = 0;
-    [SerializeField] private int m_speedUpgrade = 0;
-
+    private Level m_actualLevel;
     private GameObject m_boss;
     private HealthBehaviour m_bossHealth;
     private PlayerRenderer m_playerRenderer;
 
     private void Start()
     {
-        m_waveSystem.OnEnd += SpawnBoss;
+        m_actualLevel = Instantiate(GameOrchestrator.Instance.ActualLevel);
+        
+        m_actualLevel.WaveSystem.OnEnd += SpawnBoss;
 
         // Reset player position
         GameConfiguration.Instance.Player.transform.position = Vector2.zero;
@@ -35,7 +30,7 @@ public class LevelOrchestrator : MonoBehaviour
     private void SpawnBoss()
     {
         SpawnZone zone = SpawnZoneConfiguration.Instance.Zones.Find(z => z.Tag == EZoneTag.NORTH);
-        m_boss = Instantiate(m_bossPrefab, zone.Area.transform.position, Quaternion.identity);
+        m_boss = Instantiate(m_actualLevel.BossPrefab, zone.Area.transform.position, Quaternion.identity);
         m_bossHealth = m_boss.GetComponent<HealthBehaviour>();
         m_bossHealth.OnDeath += LevelEnd;
     }
@@ -48,16 +43,16 @@ public class LevelOrchestrator : MonoBehaviour
         // Apply upgrade to player
         PlayerUpgrader upgrader = GameConfiguration.Instance.Player.GetComponent<PlayerUpgrader>();
         
-        if(m_armorUpgrade != 0)
-            for (int i = 0; i < m_armorUpgrade; i++)
+        if(m_actualLevel.ArmorUpgrade != 0)
+            for (int i = 0; i < m_actualLevel.ArmorUpgrade; i++)
                 upgrader.AddArmor();
 
-        if(m_powerUpgrade != 0)
-            for (int i = 0; i < m_powerUpgrade; i++)
+        if(m_actualLevel.PowerUpgrade != 0)
+            for (int i = 0; i < m_actualLevel.PowerUpgrade; i++)
                 upgrader.AddPower();
 
-        if(m_speedUpgrade != 0)
-            for (int i = 0; i < m_speedUpgrade; i++)
+        if(m_actualLevel.SpeedUpgrade != 0)
+            for (int i = 0; i < m_actualLevel.SpeedUpgrade; i++)
                 upgrader.AddSpeed();
 
         //TODO: Play win effect
@@ -77,7 +72,7 @@ public class LevelOrchestrator : MonoBehaviour
         //TODO: Implement
         yield return null;
         
-        MapOrchestrator.Instance.LevelWin(this);
+        // GameOrchestrator.Instance.LevelWin(this);
         SceneManager.LoadScene("Map");
     }
 
