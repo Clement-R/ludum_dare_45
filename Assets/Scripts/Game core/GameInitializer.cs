@@ -13,7 +13,7 @@ public class GameInitializer : MonoBehaviour
     private GameObject m_player;
     private SpawnZoneConfiguration m_spawnZoneConfiguration;
 
-    private void Start()
+    private void Awake()
     {
         // Instantiate GameConfiguration
         m_gameConfiguration = Instantiate(m_gameConfigurationPrefab);

@@ -20,7 +20,7 @@ public class LevelOrchestrator : MonoBehaviour
         // Reset player position
         GameConfiguration.Instance.Player.transform.position = Vector2.zero;
 
-        GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath += LevelLose;
+        
 
         // Show player
         m_playerRenderer = GameConfiguration.Instance.Player.GetComponent<PlayerRenderer>();
@@ -37,51 +37,30 @@ public class LevelOrchestrator : MonoBehaviour
 
     private void LevelEnd()
     {
-        GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath -= LevelLose;
-        m_playerRenderer.Hide();
+        //TODO: Win effect (popup and co)
+        GameOrchestrator.Instance.LevelWin();
 
-        // Apply upgrade to player
-        PlayerUpgrader upgrader = GameConfiguration.Instance.Player.GetComponent<PlayerUpgrader>();
+        // GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath -= LevelLose;
+        // m_playerRenderer.Hide();
+
+        // // Apply upgrade to player
+        // PlayerUpgrader upgrader = GameConfiguration.Instance.Player.GetComponent<PlayerUpgrader>();
         
-        if(m_actualLevel.ArmorUpgrade != 0)
-            for (int i = 0; i < m_actualLevel.ArmorUpgrade; i++)
-                upgrader.AddArmor();
+        // if(m_actualLevel.ArmorUpgrade != 0)
+        //     for (int i = 0; i < m_actualLevel.ArmorUpgrade; i++)
+        //         upgrader.AddArmor();
 
-        if(m_actualLevel.PowerUpgrade != 0)
-            for (int i = 0; i < m_actualLevel.PowerUpgrade; i++)
-                upgrader.AddPower();
+        // if(m_actualLevel.PowerUpgrade != 0)
+        //     for (int i = 0; i < m_actualLevel.PowerUpgrade; i++)
+        //         upgrader.AddPower();
 
-        if(m_actualLevel.SpeedUpgrade != 0)
-            for (int i = 0; i < m_actualLevel.SpeedUpgrade; i++)
-                upgrader.AddSpeed();
+        // if(m_actualLevel.SpeedUpgrade != 0)
+        //     for (int i = 0; i < m_actualLevel.SpeedUpgrade; i++)
+        //         upgrader.AddSpeed();
 
-        //TODO: Play win effect
+        // //TODO: Play win effect
 
-        //TODO: Load Map level
-        StartCoroutine(_WinEffect());
-    }
-
-    private void LevelLose()
-    {
-        GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath -= LevelLose;
-        StartCoroutine(_LoseEffect());
-    }
-
-    private IEnumerator _WinEffect()
-    {
-        //TODO: Implement
-        yield return null;
-        
-        // GameOrchestrator.Instance.LevelWin(this);
-        SceneManager.LoadScene("Map");
-    }
-
-    private IEnumerator _LoseEffect()
-    {
-        //TODO: Implement
-        yield return null;
-
-        Debug.Log("Level LOSE");
-        SceneManager.LoadScene("Map");
+        // //TODO: Load Map level
+        // StartCoroutine(_WinEffect());
     }
 }

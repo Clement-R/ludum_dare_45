@@ -282,7 +282,7 @@ PrefabInstance:
     - target: {fileID: 816755851914268535, guid: 189044460313c674fb8125387947d85a,
         type: 3}
       propertyPath: m_Name
-      value: MapOrchestrator
+      value: GameOrchestrator
       objectReference: {fileID: 0}
     - target: {fileID: 816755851914268533, guid: 189044460313c674fb8125387947d85a,
         type: 3}
