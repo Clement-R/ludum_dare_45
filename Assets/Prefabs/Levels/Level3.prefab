@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2960887946225698764}
   - component: {fileID: 4424218524331515055}
   m_Layer: 0
-  m_Name: Level1
+  m_Name: Level3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74442ceebb6e7b44a95eb2152660b9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
+  ID: 3
   WaveSystem: {fileID: 4424218524331515055}
   BossPrefab: {fileID: 6623078747062256223, guid: 2ef2301f486626747b2a1fd23b23ab60,
     type: 3}

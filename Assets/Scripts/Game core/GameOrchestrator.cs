@@ -10,14 +10,22 @@ public class GameOrchestrator : MonoBehaviour
 
     public Level ActualLevel
     {
-        get { return m_levelToLoad; }
+        get
+        {
+            return m_levelToLoad;
+        }
     }
 
+    public List<Level> FinishedLevels
+    {
+        get;
+        private set;
+    } = new List<Level>();
     private Level m_levelToLoad = null;
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -66,29 +74,31 @@ public class GameOrchestrator : MonoBehaviour
     {
         //TODO: Implement
         yield return null;
-        
+
         // GameOrchestrator.Instance.LevelWin(this);
         yield return SceneManager.LoadSceneAsync("Map");
 
         yield return null;
 
         //TODO: Create event OnPlayerUpgrade. MapMenu initialize itself with current values, and then listen to OnPlayerUpgrade. Apply upgrade and foreach trigger new event.
-        // Create event OnLevelCleared. At its init MapMenu listen to this event and cross the level when triggered.
 
         // Apply upgrade to player
         PlayerUpgrader upgrader = GameConfiguration.Instance.Player.GetComponent<PlayerUpgrader>();
-        
-        if(ActualLevel.ArmorUpgrade != 0)
+
+        if (ActualLevel.ArmorUpgrade != 0)
             for (int i = 0; i < ActualLevel.ArmorUpgrade; i++)
                 upgrader.AddArmor();
 
-        if(ActualLevel.PowerUpgrade != 0)
+        if (ActualLevel.PowerUpgrade != 0)
             for (int i = 0; i < ActualLevel.PowerUpgrade; i++)
                 upgrader.AddPower();
 
-        if(ActualLevel.SpeedUpgrade != 0)
+        if (ActualLevel.SpeedUpgrade != 0)
             for (int i = 0; i < ActualLevel.SpeedUpgrade; i++)
                 upgrader.AddSpeed();
+
+        // Create event OnLevelCleared. At its init MapMenu listen to this event and cross the level when triggered.
+        FinishedLevels.Add(ActualLevel);
     }
 
     private IEnumerator _LoseEffect()
