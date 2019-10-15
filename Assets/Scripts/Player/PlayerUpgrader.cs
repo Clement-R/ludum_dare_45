@@ -75,4 +75,11 @@ public class PlayerUpgrader : MonoBehaviour
 
         OnUpgrade?.Invoke(EStats.ARMOR);
     }
+
+    public void Reset()
+    {
+        Power = 0;
+        Armor = 0;
+        Speed = 0;
+    }
 }

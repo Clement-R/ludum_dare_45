@@ -69,12 +69,6 @@ public class GameOrchestrator : MonoBehaviour
         StartCoroutine(_WinEffect());
     }
 
-    private void LevelLose()
-    {
-        GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath -= LevelLose;
-        StartCoroutine(_LoseEffect());
-    }
-
     private IEnumerator _WinEffect()
     {
         yield return SceneManager.LoadSceneAsync("Map");
@@ -101,12 +95,27 @@ public class GameOrchestrator : MonoBehaviour
         OnLevelCleared?.Invoke(ActualLevel);
     }
 
+    private void LevelLose()
+    {
+        GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath -= LevelLose;
+        StartCoroutine(_LoseEffect());
+    }
+
     private IEnumerator _LoseEffect()
     {
         //TODO: Implement
         yield return null;
 
         Debug.Log("Level LOSE");
-        SceneManager.LoadScene("Map");
+        ResetGame();
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    private void ResetGame()
+    {
+        //TODO: Implement
+
+        Day = 1;
+        GameConfiguration.Instance.PlayerUpgrader.Reset();
     }
 }

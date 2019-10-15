@@ -16,8 +16,14 @@ public class HealthBehaviour : MonoBehaviour
 
     public float ArmorFactor
     {
-        get { return m_armorFactor; }
-        set { m_armorFactor = value; }
+        get
+        {
+            return m_armorFactor;
+        }
+        set
+        {
+            m_armorFactor = value;
+        }
     }
 
     public float Percent
@@ -43,7 +49,7 @@ public class HealthBehaviour : MonoBehaviour
         Health -= p_amount * (1f - m_armorFactor);
         OnHitTaken?.Invoke();
 
-        if(Health <= 0f)
+        if (Health <= 0f)
             Death();
     }
 
@@ -56,7 +62,8 @@ public class HealthBehaviour : MonoBehaviour
     private void Death()
     {
         //TODO: Implement
-        Destroy(gameObject);
+        if (m_destroyOnDeath)
+            Destroy(gameObject);
         OnDeath?.Invoke();
     }
 
