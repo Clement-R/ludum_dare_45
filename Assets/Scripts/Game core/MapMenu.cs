@@ -24,7 +24,15 @@ public class MapMenu : MonoBehaviour
         // Display current game state
         UpdateUI();
 
-        //TODO: Listen to all events of level finished
+        // Listen to all events of level finished
+        GameConfiguration.Instance.PlayerUpgrader.OnUpgrade += UpgradeEffect;
+        GameOrchestrator.Instance.OnLevelCleared += LevelCleared;
+    }
+
+    private void OnDestroy()
+    {
+        GameConfiguration.Instance.PlayerUpgrader.OnUpgrade -= UpgradeEffect;
+        GameOrchestrator.Instance.OnLevelCleared -= LevelCleared;
     }
 
     public void LevelClicked(Level p_level)
@@ -40,7 +48,7 @@ public class MapMenu : MonoBehaviour
         DisplayUpgrades(m_speedFirstPosition, GameConfiguration.Instance.PlayerUpgrader.Speed, maxUpgrade);
         DisplayUpgrades(m_armorFirstPosition, GameConfiguration.Instance.PlayerUpgrader.Armor, maxUpgrade);
 
-        //TODO: Cross level and set is as not-playable
+        // Cross finished levels
         CrossFinishedLevels();
     }
 
@@ -75,5 +83,38 @@ public class MapMenu : MonoBehaviour
 
             nextPosition += margin;
         }
+    }
+
+    private void LevelCleared(Level p_level)
+    {
+        //TODO: Implement
+        StartCoroutine(_LevelCleared(p_level));
+    }
+
+    private IEnumerator _LevelCleared(Level p_level)
+    {
+        //TODO: Implement
+        yield return new WaitForSeconds(3f);
+
+        MapMenuLevel level = m_levels.Find(l => l.Level.ID == p_level.ID);
+        level.UIElement.alpha = 0.5f;
+        level.UIElement.interactable = false;
+    }
+
+    private void UpgradeEffect(EStats p_stat)
+    {
+        //TODO: Implement
+        StartCoroutine(_UpgradeEffect(p_stat));
+    }
+
+    private IEnumerator _UpgradeEffect(EStats p_stat)
+    {
+        //TODO: Implement
+        yield return new WaitForSeconds(3f);
+
+        int maxUpgrade = GameConfiguration.Instance.PlayerUpgrader.MaxUpgrade;
+        DisplayUpgrades(m_powerFirstPosition, GameConfiguration.Instance.PlayerUpgrader.Power, maxUpgrade);
+        DisplayUpgrades(m_speedFirstPosition, GameConfiguration.Instance.PlayerUpgrader.Speed, maxUpgrade);
+        DisplayUpgrades(m_armorFirstPosition, GameConfiguration.Instance.PlayerUpgrader.Armor, maxUpgrade);
     }
 }

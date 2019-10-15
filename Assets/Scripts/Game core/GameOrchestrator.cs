@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -7,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameOrchestrator : MonoBehaviour
 {
     public static GameOrchestrator Instance;
+
+    public Action<Level> OnLevelCleared;
 
     public Level ActualLevel
     {
@@ -99,6 +102,7 @@ public class GameOrchestrator : MonoBehaviour
 
         // Create event OnLevelCleared. At its init MapMenu listen to this event and cross the level when triggered.
         FinishedLevels.Add(ActualLevel);
+        OnLevelCleared?.Invoke(ActualLevel);
     }
 
     private IEnumerator _LoseEffect()

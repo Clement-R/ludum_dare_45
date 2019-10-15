@@ -1,9 +1,10 @@
 ﻿using System;
+
 using UnityEngine;
 
 public class PlayerUpgrader : MonoBehaviour
 {
-    public Action<string, int> OnUpgrade;
+    public Action<EStats> OnUpgrade;
 
     public int Power
     {
@@ -25,7 +26,10 @@ public class PlayerUpgrader : MonoBehaviour
 
     public int MaxUpgrade
     {
-        get { return m_maxUpgrade; }
+        get
+        {
+            return m_maxUpgrade;
+        }
     }
 
     [SerializeField] private int m_maxUpgrade;
@@ -35,7 +39,7 @@ public class PlayerUpgrader : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     [ContextMenu("Add power")]
@@ -44,8 +48,10 @@ public class PlayerUpgrader : MonoBehaviour
         //TODO: Change projectile, change damage
         // list of projectiles per power (sprite, damage, etc)
         // 1: arrow, 2: bullet, 3: cannon ball, etc.
-        Power ++;
+        Power++;
         m_weapon.Damage += 1;
+
+        OnUpgrade?.Invoke(EStats.POWER);
     }
 
     [ContextMenu("Add speed")]
@@ -53,8 +59,10 @@ public class PlayerUpgrader : MonoBehaviour
     {
         //TODO: Change sail, change speed
         // list with (sprite, speed)
-        Speed ++;
+        Speed++;
         m_movement.SetInitialSpeed(m_movement.InitialSpeed + 1);
+
+        OnUpgrade?.Invoke(EStats.SPEED);
     }
 
     [ContextMenu("Add armor")]
@@ -62,7 +70,9 @@ public class PlayerUpgrader : MonoBehaviour
     {
         //TODO: Change boat, change armor factor
         // list with (sprite, factor)
-        Armor ++;
+        Armor++;
         m_health.ArmorFactor += 0.1f;
+
+        OnUpgrade?.Invoke(EStats.ARMOR);
     }
 }
