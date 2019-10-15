@@ -11,6 +11,8 @@ public class GameOrchestrator : MonoBehaviour
 
     public Action<Level> OnLevelCleared;
 
+    public int Day = 1;
+
     public Level ActualLevel
     {
         get
@@ -75,15 +77,9 @@ public class GameOrchestrator : MonoBehaviour
 
     private IEnumerator _WinEffect()
     {
-        //TODO: Implement
-        yield return null;
-
-        // GameOrchestrator.Instance.LevelWin(this);
         yield return SceneManager.LoadSceneAsync("Map");
 
         yield return null;
-
-        //TODO: Create event OnPlayerUpgrade. MapMenu initialize itself with current values, and then listen to OnPlayerUpgrade. Apply upgrade and foreach trigger new event.
 
         // Apply upgrade to player
         PlayerUpgrader upgrader = GameConfiguration.Instance.Player.GetComponent<PlayerUpgrader>();
@@ -100,8 +96,8 @@ public class GameOrchestrator : MonoBehaviour
             for (int i = 0; i < ActualLevel.SpeedUpgrade; i++)
                 upgrader.AddSpeed();
 
-        // Create event OnLevelCleared. At its init MapMenu listen to this event and cross the level when triggered.
         FinishedLevels.Add(ActualLevel);
+        Day++;
         OnLevelCleared?.Invoke(ActualLevel);
     }
 

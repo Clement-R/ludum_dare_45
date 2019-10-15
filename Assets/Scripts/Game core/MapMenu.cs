@@ -19,6 +19,9 @@ public class MapMenu : MonoBehaviour
     [Header("Levels")]
     [SerializeField] private List<MapMenuLevel> m_levels;
 
+    [Header("Days")]
+    [SerializeField] private TMPro.TextMeshProUGUI m_days;
+
     private void Start()
     {
         // Display current game state
@@ -50,6 +53,8 @@ public class MapMenu : MonoBehaviour
 
         // Cross finished levels
         CrossFinishedLevels();
+
+        m_days.text = GameOrchestrator.Instance.Day.ToString();
     }
 
     private void CrossFinishedLevels()
@@ -87,34 +92,38 @@ public class MapMenu : MonoBehaviour
 
     private void LevelCleared(Level p_level)
     {
-        //TODO: Implement
         StartCoroutine(_LevelCleared(p_level));
     }
 
     private IEnumerator _LevelCleared(Level p_level)
     {
-        //TODO: Implement
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.75f);
 
         MapMenuLevel level = m_levels.Find(l => l.Level.ID == p_level.ID);
         level.UIElement.alpha = 0.5f;
         level.UIElement.interactable = false;
+
+        yield return new WaitForSeconds(0.25f);
+
+        m_days.text = GameOrchestrator.Instance.Day.ToString();
+
+        //TODO: Juice it!
     }
 
     private void UpgradeEffect(EStats p_stat)
     {
-        //TODO: Implement
         StartCoroutine(_UpgradeEffect(p_stat));
     }
 
     private IEnumerator _UpgradeEffect(EStats p_stat)
     {
-        //TODO: Implement
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.25f);
 
         int maxUpgrade = GameConfiguration.Instance.PlayerUpgrader.MaxUpgrade;
         DisplayUpgrades(m_powerFirstPosition, GameConfiguration.Instance.PlayerUpgrader.Power, maxUpgrade);
         DisplayUpgrades(m_speedFirstPosition, GameConfiguration.Instance.PlayerUpgrader.Speed, maxUpgrade);
         DisplayUpgrades(m_armorFirstPosition, GameConfiguration.Instance.PlayerUpgrader.Armor, maxUpgrade);
+
+        //TODO: Juice it!
     }
 }
