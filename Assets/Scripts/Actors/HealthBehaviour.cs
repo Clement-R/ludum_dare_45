@@ -14,6 +14,14 @@ public class HealthBehaviour : MonoBehaviour
         private set;
     }
 
+    public float NormalizedHealth
+    {
+        get
+        {
+            return Health / (float) m_maxHealth;
+        }
+    }
+
     public float ArmorFactor
     {
         get

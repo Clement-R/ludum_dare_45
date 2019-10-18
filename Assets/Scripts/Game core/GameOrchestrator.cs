@@ -39,15 +39,11 @@ public class GameOrchestrator : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Start()
-    {
-        GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath += LevelLose;
-    }
-
     public void LaunchLevel(Level p_level)
     {
         m_levelToLoad = p_level;
         SceneManager.LoadScene("Level");
+        GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath += LevelLose;
     }
 
     public void LevelWin()
