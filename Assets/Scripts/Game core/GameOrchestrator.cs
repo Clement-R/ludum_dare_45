@@ -26,7 +26,9 @@ public class GameOrchestrator : MonoBehaviour
         get;
         private set;
     } = new List<Level>();
+
     private Level m_levelToLoad = null;
+    private HealthBehaviour m_playerHealth;
 
     private void Awake()
     {
@@ -39,11 +41,18 @@ public class GameOrchestrator : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void Start()
+    {
+        m_playerHealth = GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>();
+    }
+
     public void LaunchLevel(Level p_level)
     {
         m_levelToLoad = p_level;
+        m_playerHealth.FullHeal();
+
         SceneManager.LoadScene("Level");
-        GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath += LevelLose;
+        m_playerHealth.OnDeath += LevelLose;
     }
 
     public void LevelWin()
@@ -56,7 +65,7 @@ public class GameOrchestrator : MonoBehaviour
 
     private void LevelEnd()
     {
-        GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath -= LevelLose;
+        m_playerHealth.OnDeath -= LevelLose;
         GameConfiguration.Instance.PlayerRenderer.Hide();
 
         //TODO: Play win effect
@@ -67,6 +76,12 @@ public class GameOrchestrator : MonoBehaviour
 
     private IEnumerator _WinEffect()
     {
+        if (ActualLevel.LastLevel)
+        {
+            GameWin();
+            yield break;
+        }
+
         yield return SceneManager.LoadSceneAsync("Map");
 
         yield return null;
@@ -91,8 +106,19 @@ public class GameOrchestrator : MonoBehaviour
         OnLevelCleared?.Invoke(ActualLevel);
     }
 
+    private void GameWin()
+    {
+        PopupsManager.Instance.ShowPopup(EPopup.WIN);
+        Debug.Log("Game win !");
+        ResetGame();
+        SceneManager.LoadScene("MainMenu");
+        //TODO: Do a end game effect
+    }
+
     private void LevelLose()
     {
+        PopupsManager.Instance.ShowPopup(EPopup.LOSE);
+        GameConfiguration.Instance.PlayerRenderer.Hide();
         GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath -= LevelLose;
         StartCoroutine(_LoseEffect());
     }
@@ -113,5 +139,7 @@ public class GameOrchestrator : MonoBehaviour
 
         Day = 1;
         GameConfiguration.Instance.PlayerUpgrader.Reset();
+        FinishedLevels.Clear();
+        m_levelToLoad = null;
     }
 }

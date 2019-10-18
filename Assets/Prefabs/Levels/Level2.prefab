@@ -49,8 +49,8 @@ MonoBehaviour:
   BossPrefab: {fileID: 6623078747062256223, guid: 2ef2301f486626747b2a1fd23b23ab60,
     type: 3}
   PowerUpgrade: 1
-  ArmorUpgrade: 1
-  SpeedUpgrade: 1
+  ArmorUpgrade: 0
+  SpeedUpgrade: 0
 --- !u!114 &4424218524331515055
 MonoBehaviour:
   m_ObjectHideFlags: 0

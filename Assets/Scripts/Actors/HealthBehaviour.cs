@@ -67,6 +67,12 @@ public class HealthBehaviour : MonoBehaviour
         OnHeal?.Invoke();
     }
 
+    public void FullHeal()
+    {
+        Health = m_maxHealth;
+        OnHeal?.Invoke();
+    }
+
     private void Death()
     {
         //TODO: Implement

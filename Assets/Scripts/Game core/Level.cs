@@ -8,6 +8,7 @@ public class Level : MonoBehaviour
     public string ID;
     public WaveSystem WaveSystem;
     public GameObject BossPrefab;
+    public bool LastLevel = false;
 
     [Header("Upgrade")]
     public int PowerUpgrade = 0;

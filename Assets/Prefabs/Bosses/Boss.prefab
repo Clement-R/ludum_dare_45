@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_attackSpeed: 1
-  m_damage: 10
+  m_damage: 20
   m_cooldown: 1
   m_attackRange: 20
   m_bulletPrefab: {fileID: 4362786561810841842, guid: 636b2ebf566187c4086d6141bd8f7a9e,
