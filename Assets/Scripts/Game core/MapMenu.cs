@@ -24,6 +24,8 @@ public class MapMenu : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
+
         // Display current game state
         UpdateUI();
 

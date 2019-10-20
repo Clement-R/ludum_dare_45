@@ -33,6 +33,7 @@ public class PopupsManager : MonoBehaviour
         PopupData popupData = m_popups.Find(p => p.Type == p_popup);
         popupData.Popup.alpha = 1f;
         popupData.Popup.interactable = true;
+        popupData.Popup.blocksRaycasts = true;
 
         if (p_onValidate != null && popupData.OkButton != null)
         {
@@ -55,6 +56,7 @@ public class PopupsManager : MonoBehaviour
     {
         p_visiblePopup.Popup.alpha = 0f;
         p_visiblePopup.Popup.interactable = false;
+        p_visiblePopup.Popup.blocksRaycasts = false;
 
         if (p_visiblePopup.OkButton != null)
         {

@@ -121,7 +121,12 @@ public class GameOrchestrator : MonoBehaviour
 
     private void LevelLose()
     {
-        PopupsManager.Instance.ShowPopup(EPopup.LOSE);
+        Time.timeScale = 0f;
+        PopupsManager.Instance.ShowPopup(EPopup.LOSE, Lose);
+    }
+
+    private void Lose()
+    {
         GameConfiguration.Instance.PlayerRenderer.Hide();
         GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>().OnDeath -= LevelLose;
         StartCoroutine(_LoseEffect());
