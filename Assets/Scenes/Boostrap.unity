@@ -782,7 +782,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34542f2c5833a674ab361fe11d508475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_popups: []
+  m_popups:
+  - Type: 1
+    Popup: {fileID: 2063711574}
+  - Type: 2
+    Popup: {fileID: 84308074}
 --- !u!1001 &1908153074
 PrefabInstance:
   m_ObjectHideFlags: 0

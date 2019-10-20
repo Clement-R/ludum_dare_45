@@ -108,11 +108,15 @@ public class GameOrchestrator : MonoBehaviour
 
     private void GameWin()
     {
-        PopupsManager.Instance.ShowPopup(EPopup.WIN);
+        //TODO: Do a end game effect
+        PopupsManager.Instance.ShowPopup(EPopup.WIN, EndGame);
+    }
+
+    private void EndGame()
+    {
         Debug.Log("Game win !");
         ResetGame();
         SceneManager.LoadScene("MainMenu");
-        //TODO: Do a end game effect
     }
 
     private void LevelLose()
