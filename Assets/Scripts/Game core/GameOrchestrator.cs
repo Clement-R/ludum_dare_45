@@ -21,6 +21,12 @@ public class GameOrchestrator : MonoBehaviour
         }
     }
 
+    public bool LevelRunning
+    {
+        get;
+        private set;
+    }
+
     public List<Level> FinishedLevels
     {
         get;
@@ -50,16 +56,16 @@ public class GameOrchestrator : MonoBehaviour
     {
         m_levelToLoad = p_level;
         m_playerHealth.FullHeal();
+        GameConfiguration.Instance.Player.transform.position = Vector2.zero;
 
         SceneManager.LoadScene("Level");
+        LevelRunning = true;
         m_playerHealth.OnDeath += LevelLose;
     }
 
     public void LevelWin()
     {
-        //TODO: Implement
-        // If is last level -> Win game and show score
-
+        LevelRunning = false;
         LevelEnd();
     }
 
@@ -121,6 +127,7 @@ public class GameOrchestrator : MonoBehaviour
 
     private void LevelLose()
     {
+        LevelRunning = false;
         Time.timeScale = 0f;
         PopupsManager.Instance.ShowPopup(EPopup.LOSE, Lose);
     }
