@@ -48,6 +48,7 @@ MonoBehaviour:
   WaveSystem: {fileID: 4424218524331515055}
   BossPrefab: {fileID: 6623078747062256223, guid: 2ef2301f486626747b2a1fd23b23ab60,
     type: 3}
+  LastLevel: 0
   PowerUpgrade: 1
   ArmorUpgrade: 0
   SpeedUpgrade: 0
@@ -64,4 +65,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waves:
-  - {fileID: 11400000, guid: 1713d5bd3afb41e4fa13e6f9309cb608, type: 2}
+  - {fileID: 11400000, guid: 5b102cc2c6430c946a7404bb555ebae0, type: 2}

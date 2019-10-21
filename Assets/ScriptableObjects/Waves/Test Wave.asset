@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: Test Wave
   m_EditorClassIdentifier: 
   m_waveElements:
-  - UnitPrefab: {fileID: 8875633306824326332, guid: fbfc0c48dfad325439373a2ca8abf703,
+  - UnitPrefab: {fileID: 600946911863778641, guid: 14c2b26e09259414c9d7e31b4843ddc8,
       type: 3}
     SpawnZone: 0
     TimeBeforeNext: 3
-  - UnitPrefab: {fileID: 8875633306824326332, guid: fbfc0c48dfad325439373a2ca8abf703,
+  - UnitPrefab: {fileID: 600946911863778641, guid: 14c2b26e09259414c9d7e31b4843ddc8,
       type: 3}
     SpawnZone: 0
     TimeBeforeNext: 1
-  - UnitPrefab: {fileID: 8875633306824326332, guid: fbfc0c48dfad325439373a2ca8abf703,
+  - UnitPrefab: {fileID: 600946911863778641, guid: 14c2b26e09259414c9d7e31b4843ddc8,
       type: 3}
     SpawnZone: 0
     TimeBeforeNext: 5
-  - UnitPrefab: {fileID: 8875633306824326332, guid: fbfc0c48dfad325439373a2ca8abf703,
+  - UnitPrefab: {fileID: 600946911863778641, guid: 14c2b26e09259414c9d7e31b4843ddc8,
       type: 3}
     SpawnZone: 0
     TimeBeforeNext: 0
-  - UnitPrefab: {fileID: 8875633306824326332, guid: fbfc0c48dfad325439373a2ca8abf703,
+  - UnitPrefab: {fileID: 600946911863778641, guid: 14c2b26e09259414c9d7e31b4843ddc8,
       type: 3}
     SpawnZone: 0
     TimeBeforeNext: 0
