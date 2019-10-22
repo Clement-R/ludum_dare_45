@@ -173,6 +173,27 @@ MonoBehaviour:
   m_weapon: {fileID: 1420316905}
   m_movement: {fileID: 496138875}
   m_health: {fileID: 7493885130705045073}
+  m_sails:
+  - {fileID: 21300000, guid: 2a4e6fa192b5909448273a6a65564947, type: 3}
+  - {fileID: 21300000, guid: 2a4e6fa192b5909448273a6a65564947, type: 3}
+  - {fileID: 21300000, guid: 2a4e6fa192b5909448273a6a65564947, type: 3}
+  m_ships:
+  - {fileID: 21300000, guid: 76a7d16695a7e9346b45a208155664a0, type: 3}
+  - {fileID: 21300000, guid: 03b4156e31acc08409a59d4f39869385, type: 3}
+  - {fileID: 21300000, guid: 4d26dc1279c0a3446af502d84d1b1dfc, type: 3}
+  m_powers:
+  - Pattern: {fileID: 11400000, guid: bb60c76421ebc2948ad47de138f77c29, type: 2}
+    BulletPrefab: {fileID: 4740569256431223474, guid: a786c632f618e1541813201ad6ab403b,
+      type: 3}
+    Damages: 2
+  - Pattern: {fileID: 11400000, guid: 41a95e37a5f9d45459ef7ca7e93a225b, type: 2}
+    BulletPrefab: {fileID: 4740569256431223474, guid: a786c632f618e1541813201ad6ab403b,
+      type: 3}
+    Damages: 6
+  - Pattern: {fileID: 11400000, guid: 41a95e37a5f9d45459ef7ca7e93a225b, type: 2}
+    BulletPrefab: {fileID: 4740569256431223474, guid: a786c632f618e1541813201ad6ab403b,
+      type: 3}
+    Damages: 12
 --- !u!114 &7493885130705045073
 MonoBehaviour:
   m_ObjectHideFlags: 0

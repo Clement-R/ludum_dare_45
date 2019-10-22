@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class WeaponSystem : MonoBehaviour
@@ -14,8 +15,14 @@ public class WeaponSystem : MonoBehaviour
 
     public float Damage
     {
-        get { return m_damage; }
-        set { m_damage = value; }
+        get
+        {
+            return m_damage;
+        }
+        set
+        {
+            m_damage = value;
+        }
     }
 
     [SerializeField] private float m_attackSpeed = 1f;
@@ -39,6 +46,11 @@ public class WeaponSystem : MonoBehaviour
         m_pattern = Instantiate(p_patternPrefab);
     }
 
+    public void SetBulletPrefab(Bullet p_prefab)
+    {
+        m_bulletPrefab = p_prefab;
+    }
+
     public void Shoot(Transform p_target)
     {
         m_lastShot = Time.time;
@@ -48,7 +60,7 @@ public class WeaponSystem : MonoBehaviour
 
     public bool IsInRange(Transform p_target)
     {
-        return  (Vector2.Distance(p_target.position, transform.position) <= m_attackRange);
+        return (Vector2.Distance(p_target.position, transform.position) <= m_attackRange);
     }
 
     public bool CanShoot()
