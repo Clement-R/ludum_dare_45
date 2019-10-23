@@ -44,6 +44,10 @@ public class PlayerUpgrader : MonoBehaviour
     [SerializeField] private List<Sprite> m_ships;
     [SerializeField] private List<WeaponDescriptor> m_powers;
 
+    [Header("Player parts")]
+    [SerializeField] private SpriteRenderer m_playerRenderer;
+    [SerializeField] private SpriteRenderer m_sailRenderer;
+
     void Start()
     {
 
@@ -66,10 +70,11 @@ public class PlayerUpgrader : MonoBehaviour
     [ContextMenu("Add speed")]
     public void AddSpeed()
     {
-        //TODO: Change sail, change speed
-        // list with (sprite, speed)
         Speed++;
         m_movement.SetInitialSpeed(m_movement.InitialSpeed + 1);
+
+        //TODO: Effect on sail change
+        m_sailRenderer.sprite = m_sails[Speed];
 
         OnUpgrade?.Invoke(EStats.SPEED);
     }
@@ -77,10 +82,11 @@ public class PlayerUpgrader : MonoBehaviour
     [ContextMenu("Add armor")]
     public void AddArmor()
     {
-        //TODO: Change boat, change armor factor
-        // list with (sprite, factor)
         Armor++;
         m_health.ArmorFactor += 0.1f;
+
+        //TODO: Effect on boat change
+        m_playerRenderer.sprite = m_ships[Armor];
 
         OnUpgrade?.Invoke(EStats.ARMOR);
     }

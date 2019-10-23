@@ -1,18 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PlayerRenderer : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer m_renderer;
+    [SerializeField] private List<SpriteRenderer> m_renderers;
 
-public void Show()
+    public void Show()
     {
-        m_renderer.enabled = true;
+        foreach (var renderer in m_renderers)
+        {
+            renderer.enabled = true;
+        }
     }
 
     public void Hide()
     {
-        m_renderer.enabled = false;
+        foreach (var renderer in m_renderers)
+        {
+            renderer.enabled = false;
+        }
     }
 }
