@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class EnemyShoot : MonoBehaviour
@@ -15,7 +16,7 @@ public class EnemyShoot : MonoBehaviour
 
     private void Update()
     {
-        if(m_weapon.CanShoot() && m_weapon.IsInRange(m_target))
-            m_weapon.Shoot(m_target);    
+        if (m_weapon.CanShoot() && m_weapon.IsInRange(m_target))
+            m_weapon.Shoot(m_target);
     }
 }

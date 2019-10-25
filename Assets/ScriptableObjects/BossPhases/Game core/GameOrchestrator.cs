@@ -21,6 +21,14 @@ public class GameOrchestrator : MonoBehaviour
         }
     }
 
+    public bool PlayerCanMove
+    {
+        get
+        {
+            return m_playerCanMove;
+        }
+    }
+
     public bool LevelRunning
     {
         get;
@@ -35,6 +43,7 @@ public class GameOrchestrator : MonoBehaviour
 
     private Level m_levelToLoad = null;
     private HealthBehaviour m_playerHealth;
+    private bool m_playerCanMove = true;
 
     private void Awake()
     {
@@ -50,6 +59,16 @@ public class GameOrchestrator : MonoBehaviour
     private void Start()
     {
         m_playerHealth = GameConfiguration.Instance.Player.GetComponent<HealthBehaviour>();
+    }
+
+    public void DisablePlayerControl()
+    {
+        m_playerCanMove = false;
+    }
+
+    public void EnablePlayerControl()
+    {
+        m_playerCanMove = true;
     }
 
     public void LaunchLevel(Level p_level)
@@ -151,8 +170,6 @@ public class GameOrchestrator : MonoBehaviour
 
     private void ResetGame()
     {
-        //TODO: Implement
-
         Day = 1;
         GameConfiguration.Instance.PlayerUpgrader.Reset();
         FinishedLevels.Clear();

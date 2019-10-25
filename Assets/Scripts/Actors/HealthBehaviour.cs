@@ -45,6 +45,8 @@ public class HealthBehaviour : MonoBehaviour
     [SerializeField] private float m_maxHealth = 100;
     [SerializeField] private float m_armorFactor = 0f;
     [SerializeField] private bool m_destroyOnDeath = true;
+    [SerializeField] private ParticleSystem m_onHitEffect;
+    [SerializeField] private ParticleSystem m_deathEffect;
 
     private void Start()
     {
@@ -56,6 +58,9 @@ public class HealthBehaviour : MonoBehaviour
     {
         Health -= p_amount * (1f - m_armorFactor);
         OnHitTaken?.Invoke();
+
+        if (m_onHitEffect != null)
+            m_onHitEffect.Play();
 
         if (Health <= 0f)
             Death();
@@ -75,9 +80,12 @@ public class HealthBehaviour : MonoBehaviour
 
     private void Death()
     {
-        //TODO: Implement
+        if (m_deathEffect != null)
+            Instantiate(m_deathEffect, transform.position, Quaternion.identity);
+
         if (m_destroyOnDeath)
             Destroy(gameObject);
+
         OnDeath?.Invoke();
     }
 

@@ -46,14 +46,19 @@ public class PlayerMovement : MonoBehaviour
         Speed = m_initialSpeed;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (GameOrchestrator.Instance.LevelRunning)
         {
+            m_rigidbody.velocity = Vector2.zero;
+
+            // Don't compute movement if player doesn't has control
+            if (!GameOrchestrator.Instance.PlayerCanMove)
+                return;
+
             m_target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             m_direction = m_target - transform.position;
 
-            m_rigidbody.velocity = Vector2.zero;
             if (m_direction.magnitude > 0.1f)
             {
                 m_rigidbody.AddForce(m_direction.normalized * m_speed, ForceMode2D.Impulse);

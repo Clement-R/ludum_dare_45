@@ -170,6 +170,9 @@ MonoBehaviour:
   m_maxHealth: 15
   m_armorFactor: 0
   m_destroyOnDeath: 1
+  m_onHitEffect: {fileID: 0}
+  m_deathEffect: {fileID: 6720964667836518364, guid: 1a7973dd8f309024d98113bf89385bb8,
+    type: 3}
 --- !u!61 &3418377550837345088
 BoxCollider2D:
   m_ObjectHideFlags: 0
