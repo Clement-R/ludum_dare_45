@@ -81,7 +81,10 @@ public class HealthBehaviour : MonoBehaviour
     private void Death()
     {
         if (m_deathEffect != null)
-            Instantiate(m_deathEffect, transform.position, Quaternion.identity);
+        {
+            var particles = Instantiate(m_deathEffect);
+            particles.transform.position = transform.position;
+        }
 
         if (m_destroyOnDeath)
             Destroy(gameObject);
